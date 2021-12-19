@@ -129,6 +129,7 @@ igra = Tetris(20, 10)
 brojac = 0
 
 pritisnuto = False
+zavrsi_igru = False
 
 while not kraj:
     if igra.figura is None:
@@ -156,11 +157,14 @@ while not kraj:
             if event.key == pg.K_SPACE:
                 igra.teleport()
             if event.key == pg.K_ESCAPE:
-                igra.__init__(20, 10)
+                #igra.__init__(20, 10)
+                zavrsi_igru = True
+                break
 
-    if event.type == pg.KEYUP:
-            if event.key == pg.K_DOWN:
-                pritisnuto = False
+
+
+    if zavrsi_igru:
+        break
 
     ekran.fill(belo)
 
